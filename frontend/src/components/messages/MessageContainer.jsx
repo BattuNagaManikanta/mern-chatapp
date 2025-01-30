@@ -2,22 +2,22 @@ import React from 'react'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
 import { FaMessage } from "react-icons/fa6";
+import useConversation from '../../zustand/useConversation';
 
 
 const MessageContainer = () => {
-  const noChatSelected = true;
+  const {selectedConversation,setSelectedConversation} =  useConversation();
   return (
     <div className=' md:min-w-[450px] flex flex-col'>
-      {noChatSelected ? <NoChatSelected/> : (
+      {!selectedConversation ? <NoChatSelected/> : (
         <>
-        {/* Header */}
-        <div className='bg-slate-500 p-4 rounded-r scrollbar'>
-          <span className='label-text'> To :  </span><span className='text-gray-900 font-bold'> Manikanta</span>
-        </div>
-        <Messages/>
-        <MessageInput/>
-      </>
-    
+          {/* Header */}
+          <div className='bg-slate-500 p-4 rounded-r scrollbar'>
+            <span className='label-text'> To :  </span><span className='text-gray-900 font-bold'>{selectedConversation.fullname}</span>
+          </div>
+          <Messages/>
+          <MessageInput/>
+        </> 
     )}
     </div>
       
