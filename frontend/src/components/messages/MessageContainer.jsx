@@ -3,6 +3,7 @@ import Messages from './Messages'
 import MessageInput from './MessageInput'
 import { FaMessage } from "react-icons/fa6";
 import useConversation from '../../zustand/useConversation';
+import { useAuthContext } from '../../context/AuthContext';
 
 
 const MessageContainer = () => {
@@ -25,9 +26,10 @@ const MessageContainer = () => {
 }
 
 const NoChatSelected = () => {
+  const {authUser} =  useAuthContext();
   return (
     <div className='flex flex-col items-center justify-center h-full text-white font-bold text-2xl'>
-      <p>Welcome Manikanta</p>
+      <p>Welcome {authUser?.fullname}</p>
       <p>Select a chart to start messaging</p>
       <FaMessage className='text-3xl md:text-6xl m-3'/>
 

@@ -1,17 +1,15 @@
 // const express = require("express");
 // const dotenv = require("dotenv")
-import express from "express";
 import  dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-
+import express from "express";
 import authRoutes from "./routes/app.route.js"
 import connectToMongoDb from "./db/connectToMongoDb.js";
 import userRoutes from "./routes/user.route.js";
 
 import messageRoutes from "./routes/message.route.js";
+import { app, server } from "./socket/socket.js";
 
-
-const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000 ;
 
@@ -29,7 +27,7 @@ app.use("/api/users",userRoutes);
 //   res.send("Hello World");
 // })
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
   connectToMongoDb();
   console.log("server running on PORT "+PORT)
   }
