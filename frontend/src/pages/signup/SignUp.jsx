@@ -17,8 +17,6 @@ const SignUp = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(inputs);
-    
     signUp(inputs);
   }
 
